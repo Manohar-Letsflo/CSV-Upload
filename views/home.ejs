@@ -1,0 +1,34 @@
+<h1>Home</h1>
+<form enctype="multipart/form-data" action="/upload" method="POST">
+    <div class="form-group">
+      <input type="file" class="form-control-file" name="uploaded_file">
+      <input type="submit" value="Upload" class="btn btn-default">            
+    </div>
+</form>
+
+<table>
+    <thead>
+      <tr>
+        <th>File Name</th>
+        <th>Size</th>
+        <th>Delete Action </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%if (csv_files.length >0){ %>
+      <% csv_files.forEach(function(row){ %>
+      <tr>
+        <td><a href="/file/params/<%= row.id %>"><%= row.filename %></a>
+        <td><%= row.size %></td>
+        <td>
+            <a href="/delete/<%= row.id %>">Delete</a>
+        </td>
+       </tr>
+      <% })}else{ %>
+        <tr>
+            <td colspan="6">No Record Found</td>
+            
+          </tr>
+        <% } %>
+    </tbody>
+  </table>

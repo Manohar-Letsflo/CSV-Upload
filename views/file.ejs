@@ -1,0 +1,21 @@
+<h1>File Details</h1>
+<a href="/">Home</a>
+<table>
+    <thead>
+      <tr>
+        <% for(header of headers ||[]) { %>
+            <th><%= header %></th>
+        <% } %>
+      </tr>
+    </thead>
+    <tbody>
+        <% for(rec of records) { %>
+            <tr>
+                <% for(header of headers) { %>
+                    <td ><%= rec[header] %></td>
+                <% } %>
+            </tr>
+        <% } %>
+
+    </tbody>
+  </table>
