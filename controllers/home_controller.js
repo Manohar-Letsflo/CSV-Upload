@@ -8,20 +8,20 @@ const FilesEntity = require("../models/files");
 module.exports.home = async function (req, res) {
   try {
     let csvFiles = await FilesEntity.find({}, { filename: 1, size: 1 });
-    console.log("csvFiles =", csvFiles);
+    logger.info("csvFiles =", csvFiles);
     return res.render("home", {
       title: "CSV Upload",
       csv_files: csvFiles
     });
   } catch (err) {
-    console.log("Error", err);
+    logger.info("Error", err);
     return;
   }
 };
 module.exports.uploadFile = async function (req, res) {
   try {
-    console.log();
-    console.log("req.file =", req.file);
+    logger.info();
+    logger.info("req.file =", req.file);
     let uploadedFileConfig = req.file || {};
     let q = {
       filename: uploadedFileConfig.originalname
@@ -43,7 +43,7 @@ module.exports.uploadFile = async function (req, res) {
     }
     return res.redirect("back");
   } catch (err) {
-    console.log("Error", err);
+    logger.info("Error", err);
     return;
   }
 };
@@ -53,6 +53,6 @@ module.exports.deleteFile = async function (req, res) {
     await FilesEntity.deleteOne({ _id: id });
     return res.redirect("back");
   } catch (error) {
-    console.log("error =", error);
+    logger.info("error =", error);
   }
 };

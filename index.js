@@ -1,7 +1,10 @@
 "use strict";
 
-const express = require("express");
 const env = require("./config/environment");
+const Logger = require("./logger");
+global.logger = Logger(env);
+
+const express = require("express");
 // const logger = require("morgan");
 
 const app = express();
@@ -47,7 +50,7 @@ app.use(
     store: new MongoStore(
       { mongoUrl: "mongodb://localhost/codeial", autoRemove: "disabled" },
       err => {
-        console.log(err || "connect-mongodb setup ok");
+        logger.warn(err || "connect-mongodb setup ok");
       }
     )
   })
@@ -60,8 +63,8 @@ app.use("/", require("./routes"));
 
 app.listen(port, function (err) {
   if (err) {
-    console.log(`Error in running the server: ${err}`);
+    logger.warn(`Error in running the server: ${err}`);
   }
 
-  console.log(`Server is running on port: ${port}`);
+  logger.info(`Server is running on port: ${port}`);
 });

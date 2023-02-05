@@ -2,7 +2,7 @@
 
 // const fs = require("fs");
 // const rfs = require("rotating-file-stream");
-// const path = require("path");
+const path = require("path");
 
 // const logDirectory = path.join(__dirname, "../production_logs");
 // fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
@@ -12,9 +12,12 @@
 //   path: logDirectory,
 // });
 
+const logDirectory = path.join(__dirname, "../app_logs");
+
 const development = {
   name: "development",
   asset_path: "/assets",
+  logDir: logDirectory,
   session_cookie_key: "iYeftn9LMTf0KnzXSNMk",
   db: "csv_import"
   // morgan: {

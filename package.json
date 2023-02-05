@@ -4,7 +4,7 @@
   "description": "CSV Upload",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch ../task-1-csv-upload index.js | bunyan -o short -L"
+    "start": "nodemon --watch ../CSV-Upload index.js | bunyan -o short -L"
   },
   "author": "Mekala Lakshmi Manohar",
   "license": "ISC",
@@ -21,7 +21,9 @@
     "express-session": "^1.17.3",
     "filesize": "^10.0.6",
     "fs": "0.0.1-security",
+    "fs-extra": "^11.1.0",
     "http": "0.0.1-security",
+    "moment": "^2.29.4",
     "mongoose": "^6.8.4",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
